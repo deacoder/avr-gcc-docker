@@ -38,4 +38,4 @@ RUN apk add --update openssl bash gcc g++ libc-dev gmp-dev mpfr-dev mpc1-dev mak
 && ./configure --prefix=/usr/local/avr --build=`./config.guess` --host=avr \
 && make -j${NPROC} && make install && cd ../.. \
 && rm -rf /tmp/distr \
-&& apk del openssl gcc g++ libc-dev gmp-dev mpfr-dev mpc1-dev
+&& apk del openssl libc-dev gmp-dev mpfr-dev mpc1-dev
