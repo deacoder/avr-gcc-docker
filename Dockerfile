@@ -2,7 +2,7 @@ FROM alpine:3.5
 
 ENV PATH $PATH:/usr/local/avr/bin
 
-RUN apk add --no-cache openssl bash git gcc g++ libc-dev gmp-dev mpfr-dev mpc1-dev make doxygen graphviz \
+RUN apk add --no-cache openssl bash git gcc g++ libc-dev gmp-dev mpfr-dev mpc1-dev make \
 # Create build folder
 && NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && mkdir /tmp/distr && cd /tmp/distr \
 #
