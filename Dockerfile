@@ -8,14 +8,14 @@ RUN apk add --no-cache openssl bash git gcc g++ libc-dev gmp-dev mpfr-dev mpc1-d
 #
 # Download sources
 #
-&& wget https://cmake.org/files/v3.8/cmake-3.8.0.tar.gz \
+&& wget https://cmake.org/files/v3.9/cmake-3.9.3.tar.gz \
 && wget http://ftp.gnu.org/gnu/binutils/binutils-2.28.tar.bz2 \
-&& wget http://ftp.acc.umu.se/mirror/gnu.org/gnu/gcc/gcc-7.1.0/gcc-7.1.0.tar.bz2 \
+&& wget http://ftp.acc.umu.se/mirror/gnu.org/gnu/gcc/gcc-7.2.0/gcc-7.2.0.tar.xz \
 && wget http://download.savannah.gnu.org/releases/avr-libc/avr-libc-2.0.0.tar.bz2 \
 #
 # Building cmake
 #
-&& tar -xvf cmake-3.8.0.tar.gz && cd cmake-3.8.0 \
+&& tar -xvf cmake-3.9.3.tar.gz && cd cmake-3.9.3 \
 && ./bootstrap && make -j${NPROC} && make install && cd .. \
 #
 # Building binutils
@@ -27,7 +27,7 @@ RUN apk add --no-cache openssl bash git gcc g++ libc-dev gmp-dev mpfr-dev mpc1-d
 #
 # Build gcc
 #
-&& bunzip2 -c gcc-7.1.0.tar.bz2 | tar xf - && cd gcc-7.1.0 \
+&& tar -xvf gcc-7.2.0.tar.xz && cd gcc-7.2.0 \
 && mkdir build && cd build \
 && ../configure --prefix=/usr/local/avr --target=avr --enable-languages=c,c++ --disable-nls --disable-libssp --with-dwarf2 \
 && make -j${NPROC} && make install && cd ../.. \
